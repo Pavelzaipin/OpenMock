@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mock Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Mock Server</h1>
+    <span id="connStatus" class="conn">подключение…</span>
+</header>
+
+<section class="card" id="editor">
+    <h2 id="editorTitle">Новый мок</h2>
+    <form id="mockForm">
+        <div class="row">
+            <select id="fMethod">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PUT</option>
+                <option>PATCH</option>
+                <option>DELETE</option>
+                <option>HEAD</option>
+                <option>OPTIONS</option>
+            </select>
+            <input id="fPath" placeholder="/api/users" required>
+            <input id="fStatus" type="number" value="200" title="HTTP статус">
+            <input id="fContentType" value="application/json" title="Content-Type">
+        </div>
+        <textarea id="fBody" rows="6" placeholder='{"ok": true}'></textarea>
+        <div class="row">
+            <button type="submit" id="saveBtn">Добавить</button>
+            <button type="button" id="cancelEdit" hidden>Отмена</button>
+        </div>
+    </form>
+</section>
+
+<section class="card" id="unmatchedCard">
+    <div class="card-head">
+        <h2>Запросы без мока (404)</h2>
+        <button class="clear" data-log="log-unmatched">Очистить</button>
+    </div>
+    <ul class="log" id="log-unmatched"></ul>
+</section>
+
+<main id="mocks"></main>
+
+<script src="app.js"></script>
+</body>
+</html>
